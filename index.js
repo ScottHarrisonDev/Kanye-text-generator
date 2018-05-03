@@ -1,6 +1,6 @@
-fetch('/sources/kanye-west/kanye-west-yeezus-lyrics.json')
+fetch('/sources/kanye-west/kanye-west-the-college-dropout-lyrics.json')
     .then(blob => blob.json())
-    .then(data => process(data['kanye-west-yeezus-lyrics']));
+    .then(data => process(data['kanye-west-the-college-dropout-lyrics']));
 
 
 function process(source) {
@@ -18,9 +18,9 @@ function process(source) {
     }
 
     // Generate
-    const start = 0;
-    let output = source.substring(start, start + order); // hardcoded to use the same first word for now
-    // let output = 'Autumn';
+    const start = 40;
+    // let output = source.substring(start, start + order); // hardcoded to use the same first word for now
+    let output = 'I wanna';
     for (let i = 0; i < 500; i++) {
         const current = output.substring(output.length - order);
         const possibilities = ngrams[current];
