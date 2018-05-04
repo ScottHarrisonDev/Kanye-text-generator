@@ -1,4 +1,4 @@
-fetch('/sources/kanye-west/kanye-west-the-college-dropout-lyrics.json')
+fetch('sources/kanye-west/kanye-west-the-college-dropout-lyrics.json')
     .then(blob => blob.json())
     .then(data => process(data['kanye-west-the-college-dropout-lyrics']));
 
