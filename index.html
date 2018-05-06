@@ -1,9 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Montserrat:400,700" rel="stylesheet">
+    <style>
+        html {
+            height: 100vh;
+            background: linear-gradient(150deg, #53f 15%, #C80CE8 70%, #E85D0C 94%) no-repeat;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            font-family: 'Bungee Inline', Arial, sans-serif;
+            font-size: 3rem;
+            margin: 1rem;
+        }
+
+        button {
+            font-family: 'Bungee Inline', Arial, sans-serif;
+            font-size: 1.5rem;
+            background-color: #FFB40D;
+            color: #000;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .generated-text {
+            text-align: initial;
+            padding: 1rem;
+        }
+    </style>
 </head>
+
 <body>
-Check the console...
-<script src="index.js"></script>
+    <h1>Markov Speech Generator</h1>
+    <p>Generate some text in the style of Kanye West. Just hit the button!</p>
+    <button id="generate" type="button">Generate</button>
+
+    <div id="generated-text" class="generated-text"></div>
+
+    <script src=" index.js "></script>
 </body>
+
 </html>
