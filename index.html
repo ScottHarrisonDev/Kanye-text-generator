@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Montserrat:400" rel="stylesheet">
     <style>
         html {
             height: 100vh;
@@ -11,6 +11,7 @@
             font-size: 20px;
             text-align: center;
             padding-top: 50px;
+            color: #fff;
         }
 
         h1 {
@@ -23,27 +24,60 @@
             font-family: 'Bungee Inline', Arial, sans-serif;
             font-size: 1.5rem;
             background-color: #FFB40D;
-            color: #000;
             border: none;
             padding: 0.5rem 1rem;
             cursor: pointer;
+            font-weight: bold;
+            color: #fff;
+            box-shadow: #fff 3px 3px 0px 0px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: scale(1);
         }
 
         .generated-text {
             text-align: initial;
             padding: 1rem;
+            max-width: 70vw;
+            margin: 0 auto;
+        }
+
+        footer {
+            padding-top: 30px;
+        }
+
+        a {
+            text-decoration: none;
+            border-bottom: 1px solid #FFB40D;
+            color: #FFB40D;
+        }
+
+        a:hover {
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <h1>Markov Speech Generator</h1>
-    <p>Generate some text in the style of Kanye West. Just hit the button!</p>
-    <button id="generate" type="button">Generate</button>
+    <main>
+        <h1>Kanye Speech Generator</h1>
+        <p>Generate some text in the style of Kanye West. Hit the Ye button!</p>
+        <button id="generate" type="button">Ye</button>
 
-    <div id="generated-text" class="generated-text"></div>
+        <div id="generated-text" class="generated-text"></div>
+    </main>
 
-    <script src=" index.js "></script>
+    <footer>
+        A project by
+        <a href="https://github.com/scottharrisondev">Scott Harrison</a>
+    </footer>
+
+    <script src="index.js "></script>
 </body>
 
 </html>

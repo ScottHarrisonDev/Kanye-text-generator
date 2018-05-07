@@ -1,11 +1,11 @@
-// fetch('sources/kanye-west/kanye-west-yeezus-lyrics.json')
-//     .then(blob => blob.json())
-//     .then(data => process(data['kanye-west-yeezus-lyrics']));
-fetch('sources/kanye-west/kanye-west-the-college-dropout-lyrics.json')
+fetch('sources/kanye-west/kanye-west-yeezus-lyrics.json')
     .then(blob => blob.json())
-    .then(data => process(data['kanye-west-the-college-dropout-lyrics']));
+    .then(data => process(data['kanye-west-yeezus-lyrics']));
+// fetch('sources/kanye-west/kanye-west-the-college-dropout-lyrics.json')
+//     .then(blob => blob.json())
+//     .then(data => process(data['kanye-west-the-college-dropout-lyrics']));
 
-const order = 5;
+const order = 4;
 const ngrams = [];
 let firstNgram = '';
 
