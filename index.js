@@ -1,16 +1,33 @@
-fetch('sources/kanye-west/kanye-west-yeezus-lyrics.json')
-    .then(blob => blob.json())
-    .then(data => process(data['kanye-west-yeezus-lyrics']));
-// fetch('sources/kanye-west/kanye-west-the-college-dropout-lyrics.json')
-//     .then(blob => blob.json())
-//     .then(data => process(data['kanye-west-the-college-dropout-lyrics']));
+console.info('Learning, please wait.');
 
+let source = '';
 const order = 4;
 const ngrams = [];
 let firstNgram = '';
 
-function process(source) {
+function reflect(promise) {
+    return promise.then(function (v) { return { v: v, status: "resolved" } },
+        function (e) { return { e: e, status: "rejected" } });
+}
 
+var fetches = [
+    fetch('sources/kanye-west/kanye-west-yeezus-lyrics.json')
+        .then(blob => blob.json())
+        .then(data => compile(data['kanye-west-yeezus-lyrics'])),
+    fetch('sources/kanye-west/kanye-west-the-college-dropout-lyrics.json')
+        .then(blob => blob.json())
+        .then(data => compile(data['kanye-west-the-college-dropout-lyrics']))
+];
+
+Promise.all(fetches.map(reflect)).then(results => {
+    process();
+});
+
+function compile(data) {
+    source += ' ' + data;
+};
+
+function process() {
     // Learn
     for (let i = 0; i < source.length - order; i++) {
         const ngram = source.substr(i, order);
@@ -20,9 +37,10 @@ function process(source) {
         if (!ngrams[ngram]) {
             ngrams[ngram] = [];
         }
-        const nextChar = source.substr(i + order, 1);
-        ngrams[ngram].push(nextChar);
+
+        ngrams[ngram].push(source.substr(i + order, 1));
     }
+    console.info('Completed learning. Ready to generate!');
 }
 
 function generate() {
