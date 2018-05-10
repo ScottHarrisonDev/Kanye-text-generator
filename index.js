@@ -2,7 +2,7 @@ console.info('Learning, please wait.');
 
 let source = '';
 const order = 4;
-const ngrams = [];
+const ngrams = {};
 let firstNgram = '';
 
 function reflect(promise) {
