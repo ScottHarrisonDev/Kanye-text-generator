@@ -1,7 +1,7 @@
 console.info('Learning, please wait.');
 
 let source = '';
-const order = 4;
+const order = 6;
 const ngrams = {};
 let firstNgram = '';
 
@@ -11,9 +11,24 @@ function reflect(promise) {
 }
 
 var fetches = [
+    fetch('sources/kanye-west/kanye-west-the-life-of-pablo-lyrics.json')
+        .then(blob => blob.json())
+        .then(data => compile(data['kanye-west-the-life-of-pablo-lyrics'])),
     fetch('sources/kanye-west/kanye-west-yeezus-lyrics.json')
         .then(blob => blob.json())
         .then(data => compile(data['kanye-west-yeezus-lyrics'])),
+    fetch('sources/kanye-west/kanye-west-my-beautiful-dark-twisted-fantasy-lyrics.json')
+        .then(blob => blob.json())
+        .then(data => compile(data['kanye-west-my-beautiful-dark-twisted-fantasy-lyrics'])),
+    fetch('sources/kanye-west/kanye-west-808s-and-heartbreak-lyrics.json')
+        .then(blob => blob.json())
+        .then(data => compile(data['kanye-west-808s-and-heartbreak-lyrics'])),
+    fetch('sources/kanye-west/kanye-west-graduation-lyrics.json')
+        .then(blob => blob.json())
+        .then(data => compile(data['kanye-west-graduation-lyrics'])),
+    fetch('sources/kanye-west/kanye-west-late-orchestration-lyrics.json')
+        .then(blob => blob.json())
+        .then(data => compile(data['kanye-west-late-orchestration-lyrics'])),
     fetch('sources/kanye-west/kanye-west-the-college-dropout-lyrics.json')
         .then(blob => blob.json())
         .then(data => compile(data['kanye-west-the-college-dropout-lyrics']))
