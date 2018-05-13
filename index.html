@@ -14,6 +14,14 @@
             color: #fff;
         }
 
+        .kanye-icon {
+            max-width: 150px;
+            animation-name: shake;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
         h1 {
             font-family: 'Bungee Inline', Arial, sans-serif;
             font-size: 3rem;
@@ -60,11 +68,24 @@
         a:hover {
             font-weight: bold;
         }
+
+        @keyframes shake {
+            0% {
+                transform: rotate(-20deg);
+            }
+            50% {
+                transform: rotate(20deg);
+            }
+            100% {
+                transform: rotate(-20deg);
+            }
+        }
     </style>
 </head>
 
 <body>
     <main>
+        <img src="350px-transparent.png" class="kanye-icon">
         <h1>Kanye Text Generator</h1>
         <p>Generate some text in the style of Kanye West (based on the lyrics from his songs). Just hit the Ye button!</p>
         <button id="generate" type="button">Ye</button>
