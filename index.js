@@ -1,8 +1,8 @@
 console.info('Learning, please wait.');
 
 let source = '';
-const order = 6;
-const ngrams = {};
+let order = 8;
+let ngrams = {};
 let firstNgram = '';
 let stringLimit = 300;
 
@@ -39,6 +39,7 @@ function compile(data) {
 };
 
 function process() {
+    ngrams = {};
     // Learn
     for (let i = 0; i < source.length - order; i++) {
         const ngram = source.substr(i, order);
@@ -72,6 +73,10 @@ function outputLimitReached(stringLength) {
     return stringLength > stringLimit;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('generate').addEventListener('click', generate);
+    document.getElementById('order').addEventListener('change', (e) => {
+        order = parseInt(e.target.value);
+        process();
+    });
 });
