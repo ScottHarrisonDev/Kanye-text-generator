@@ -4,11 +4,7 @@ let source = '';
 const order = 6;
 const ngrams = {};
 let firstNgram = '';
-
-function reflect(promise) {
-    return promise.then(function (v) { return { v: v, status: "resolved" } },
-        function (e) { return { e: e, status: "rejected" } });
-}
+let stringLimit = 300;
 
 var fetches = [
     fetch('sources/kanye-west/kanye-west-the-life-of-pablo-lyrics.json')
@@ -34,7 +30,7 @@ var fetches = [
         .then(data => compile(data['kanye-west-the-college-dropout-lyrics']))
 ];
 
-Promise.all(fetches.map(reflect)).then(results => {
+Promise.all(fetches).then(results => {
     process();
 });
 
@@ -60,12 +56,20 @@ function process() {
 
 function generate() {
     let output = firstNgram;
-    for (let i = 0; i < 500; i++) {
+    while (!outputLimitReached(output.length) || !isEndOfWord(output.substring(output.length - order))) {
         const current = output.substring(output.length - order);
         const possibilities = ngrams[current];
         output += possibilities[Math.floor(Math.random() * possibilities.length)];
     }
     document.getElementById('generated-text').innerHTML = output;
+}
+
+function isEndOfWord(ngram) {
+    return '.!?'.indexOf(ngram.slice(-1)) > -1;
+}
+
+function outputLimitReached(stringLength) {
+    return stringLength > stringLimit;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
