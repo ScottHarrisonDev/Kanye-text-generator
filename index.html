@@ -5,17 +5,20 @@
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Montserrat:400" rel="stylesheet">
     <style>
         html {
-            height: 100vh;
-            background: linear-gradient(150deg, #53f 15%, #C80CE8 70%, #E85D0C 94%) no-repeat;
             font-family: 'Montserrat', sans-serif;
-            font-size: 20px;
+            font-size: 40px;
             text-align: center;
-            padding-top: 50px;
             color: #fff;
+            min-height: 100vh;
+            background: linear-gradient(150deg, #53f 15%, #C80CE8 70%, #E85D0C 94%) no-repeat;
+        }
+
+        body {
+            padding-top: 50px;
         }
 
         .kanye-icon {
-            max-width: 150px;
+            width: 30vw;
             animation-name: shake;
             animation-duration: 2s;
             animation-iteration-count: infinite;
@@ -26,6 +29,11 @@
             font-family: 'Bungee Inline', Arial, sans-serif;
             font-size: 3rem;
             margin: 1rem;
+        }
+
+        p {
+            max-width: 90%;
+            margin: 0 auto;
         }
 
         button {
@@ -51,7 +59,8 @@
         .generated-text {
             text-align: initial;
             padding: 1rem;
-            max-width: 70vw;
+            max-width: 80vw;
+            text-align: justify;
             margin: 0 auto;
         }
 
@@ -69,6 +78,14 @@
             font-weight: bold;
         }
 
+        .order {
+            display: none;
+        }
+
+        .controls {
+            margin-top: 2vh;
+        }
+
         @keyframes shake {
             0% {
                 transform: rotate(-20deg);
@@ -80,6 +97,18 @@
                 transform: rotate(-20deg);
             }
         }
+
+        @media screen and (min-width: 1200px) {
+            html {
+                font-size:20px;
+            }
+            .kanye-icon {
+                width: 10vw;
+            }
+            .order {
+                display: inline;
+            }
+        }
     </style>
 </head>
 
@@ -88,9 +117,10 @@
         <img src="350px-transparent.png" class="kanye-icon">
         <h1>Kanye Text Generator</h1>
         <p>Generate some text in the style of Kanye West (based on the lyrics from his songs). Just hit the Ye button!</p>
-        <button id="generate" type="button">Ye</button>
-
-        <input type="range" min="3" max="12" value="8" id="order">
+        <div class="controls">
+            <button id="generate" type="button">Ye</button>
+            <input type="range" min="3" max="12" value="8" id="order" class="order">
+        </div>
 
         <div id="generated-text" class="generated-text"></div>
     </main>
