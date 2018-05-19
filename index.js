@@ -5,6 +5,19 @@ let order = 8;
 let ngrams = {};
 let firstNgram = '';
 let stringLimit = 50;
+const startWords = [
+    'AAAAAAAA',
+    'hurry up',
+    'Excuse me',
+    ' Donald ',
+    'i\'m outta ',
+    'Chi city',
+    'woke up ',
+    'I ain\'t ',
+    'I wish I',
+    'somewhere',
+    'Good morning'
+];
 
 var fetches = [
     fetch('sources/kanye-west/kanye-west-the-life-of-pablo-lyrics.json')
@@ -52,17 +65,12 @@ function process() {
     console.info('Completed learning. Ready to generate!');
 }
 
-function getFirstNgram() {
-    const randomNgram = Object.keys(ngrams)[Math.floor(Math.random() * Object.keys(ngrams).length)];
-    console.log(randomNgram);
-    if (randomNgram.match(/[a-z]/i).index === 0 && randomNgram.substr(0, 1) === randomNgram.substr(0, 1).toUpperCase()) {
-        return randomNgram;
-    }
-    return getFirstNgram();
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function generate() {
-    let output = getFirstNgram();
+    let output = capitalize(startWords[Math.floor(Math.random() * startWords.length)]);
     while (!outputLimitReached(output.length) || !isEndOfWord(output.substring(output.length - order))) {
         const current = output.substring(output.length - order);
         const possibilities = ngrams[current];
