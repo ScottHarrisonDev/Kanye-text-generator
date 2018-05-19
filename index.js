@@ -43,9 +43,6 @@ function process() {
     // Learn
     for (let i = 0; i < source.length - order; i++) {
         const ngram = source.substr(i, order);
-        if (i === 0) {
-            firstNgram = ngram;
-        }
         if (!ngrams[ngram]) {
             ngrams[ngram] = [];
         }
@@ -55,8 +52,17 @@ function process() {
     console.info('Completed learning. Ready to generate!');
 }
 
+function getFirstNgram() {
+    const randomNgram = Object.keys(ngrams)[Math.floor(Math.random() * Object.keys(ngrams).length)];
+    console.log(randomNgram);
+    if (randomNgram.match(/[a-z]/i).index === 0 && randomNgram.substr(0, 1) === randomNgram.substr(0, 1).toUpperCase()) {
+        return randomNgram;
+    }
+    return getFirstNgram();
+}
+
 function generate() {
-    let output = firstNgram;
+    let output = getFirstNgram();
     while (!outputLimitReached(output.length) || !isEndOfWord(output.substring(output.length - order))) {
         const current = output.substring(output.length - order);
         const possibilities = ngrams[current];
