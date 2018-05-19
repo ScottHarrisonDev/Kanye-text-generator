@@ -4,7 +4,7 @@ let source = '';
 let order = 8;
 let ngrams = {};
 let firstNgram = '';
-let stringLimit = 300;
+let stringLimit = 50;
 
 var fetches = [
     fetch('sources/kanye-west/kanye-west-the-life-of-pablo-lyrics.json')
@@ -75,8 +75,4 @@ function outputLimitReached(stringLength) {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('generate').addEventListener('click', generate);
-    document.getElementById('order').addEventListener('change', (e) => {
-        order = parseInt(e.target.value);
-        process();
-    });
 });

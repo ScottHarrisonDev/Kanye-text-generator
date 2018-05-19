@@ -78,10 +78,6 @@
             font-weight: bold;
         }
 
-        .order {
-            display: none;
-        }
-
         .controls {
             margin-top: 2vh;
         }
@@ -100,13 +96,10 @@
 
         @media screen and (min-width: 1200px) {
             html {
-                font-size:20px;
+                font-size: 20px;
             }
             .kanye-icon {
                 width: 10vw;
-            }
-            .order {
-                display: inline;
             }
         }
     </style>
@@ -119,7 +112,6 @@
         <p>Generate some text in the style of Kanye West (based on the lyrics from his songs). Just hit the Ye button!</p>
         <div class="controls">
             <button id="generate" type="button">Ye</button>
-            <input type="range" min="3" max="12" value="8" id="order" class="order">
         </div>
 
         <div id="generated-text" class="generated-text"></div>
